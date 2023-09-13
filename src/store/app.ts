@@ -1,8 +1,11 @@
 // Utilities
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
-export const useAppStore = defineStore('app', {
+import { Cliente, Produto } from "@/types/appTypes";
+
+export const useAppStore = defineStore("app", {
   state: () => ({
-    //
+    clientes: [] as Cliente[],
+    produtos: [] as Produto[],
   }),
-})
+});
