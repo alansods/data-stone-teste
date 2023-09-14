@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="text-h5 font-weight-bold mb-10">Adicionar Cliente</div>
+    <PageTitle title="Adicionar Cliente"  />
+
     <v-form @submit.prevent="adicionarCliente">
       <v-row dense>
         <v-col cols="12">
@@ -66,8 +67,8 @@
 import { ref, computed } from "vue";
 import { useAppStore } from "@/store/app";
 import { Cliente } from "@/types/appTypes";
-
 import { vMaska } from "maska";
+import PageTitle from "@/components/Typography/PageTitle.vue";
 
 const options = { mask: "(##) # ####-####" };
 
@@ -83,7 +84,6 @@ const novoCliente = ref<Cliente>({
 const appStore = useAppStore();
 
 const adicionarCliente = (): void => {
-  console.log("FOI");
   appStore.clientes.push(novoCliente.value);
 
   novoCliente.value = {

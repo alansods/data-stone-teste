@@ -28,6 +28,6 @@
 <script setup lang="ts">
 import { Cliente } from "@/types/appTypes";
 
-const { cliente } = defineProps<{ cliente: Cliente, required: true }>();
+const { cliente } = defineProps<{ cliente: Cliente }>();
 
 </script>

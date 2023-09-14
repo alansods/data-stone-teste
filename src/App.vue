@@ -2,7 +2,7 @@
   <v-app>
     <NavBar />
     <v-main>
-      <v-container>
+      <v-container class="pt-10">
         <transition mode="out-in">
           <router-view />
         </transition>
