@@ -1,6 +1,10 @@
 export type Cliente = {
   id: number;
   nome: string;
+  documento: string;
+  telefone: string;
+  email: string;
+  ativo: boolean;
   produtos?: Produto[];
 };
 

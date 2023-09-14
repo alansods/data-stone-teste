@@ -1,15 +1,16 @@
 <template>
   <v-app>
-    <NavBar/>
+    <NavBar />
     <v-main>
-      <transition mode="out-in">
-      <router-view />
-    </transition>
+      <v-container>
+        <transition mode="out-in">
+          <router-view />
+        </transition>
+      </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script setup lang="ts">
 import NavBar from "@/layouts/NavBar.vue";
-
 </script>
