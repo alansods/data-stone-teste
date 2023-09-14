@@ -2,6 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from "@/views/Home.vue";
 
+import ClienteAdd from "@/views/clientes/ClienteAdd.vue";
 import ClientesList from "@/views/clientes/ClientesList.vue";
 import ClienteDetails from "@/views/clientes/ClienteDetails.vue";
 
@@ -16,6 +17,10 @@ const routes = [
   {
     path: '/clientes',
     component: ClientesList,
+  },
+  {
+    path: '/adicionar-cliente',
+    component: ClienteAdd,
   },
   {
     path: '/cliente/:id',
