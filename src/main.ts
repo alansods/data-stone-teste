@@ -6,6 +6,7 @@
 
 // Components
 import App from './App.vue'
+import { vMaska } from "maska"
 
 // Composables
 import { createApp } from 'vue'
@@ -14,6 +15,9 @@ import { createApp } from 'vue'
 import { registerPlugins } from '@/plugins'
 
 const app = createApp(App)
+
+createApp({}).directive("maska", vMaska)
+
 
 registerPlugins(app)
 

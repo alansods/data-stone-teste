@@ -31,6 +31,7 @@
           label="Telefone"
           required
           :rules="telefoneRules"
+          v-maska:[options]
         ></v-text-field>
       </v-col>
     </v-row>
@@ -55,9 +56,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { useAppStore } from "@/store/app";
 import { Cliente } from "@/types/appTypes";
+
+import { vMaska } from "maska"
+
+const options = { mask: '(##) # ####-####' };
 
 const novoCliente = ref<Cliente>({
   id: Math.random(),
@@ -96,8 +101,5 @@ const emailRules = [
 
 const telefoneRules = [
   (v: string) => !!v || "O telefone é obrigatório",
-  (v: string) =>
-    (v && v.length <= 15) || "O telefone deve ter no máximo 15 caracteres",
-  (v: string) => /^\d+$/.test(v) || "O telefone deve conter apenas números",
 ];
 </script>
