@@ -8,6 +8,7 @@ export const useAppStore = defineStore("app", {
     showSnackBar: false,
     clientes: [
       {
+        id: 1,
         nome: "Alan Santos",
         ativo: true,
         documento: "teste",
@@ -15,6 +16,7 @@ export const useAppStore = defineStore("app", {
         telefone: "(85)989782595",
       },
       {
+        id: 2,
         nome: "Beatriz Oliveira",
         ativo: true,
         documento: "teste",
@@ -22,20 +24,7 @@ export const useAppStore = defineStore("app", {
         telefone: "(85)998952645",
       },
       {
-        nome: "José Ramon",
-        ativo: true,
-        documento: "teste",
-        email: "jose@gmail.com",
-        telefone: "(85)948526987",
-      },
-      {
-        nome: "José Ramon",
-        ativo: true,
-        documento: "teste",
-        email: "jose@gmail.com",
-        telefone: "(85)948526987",
-      },
-      {
+        id: 3,
         nome: "José Ramon",
         ativo: true,
         documento: "teste",
@@ -43,6 +32,22 @@ export const useAppStore = defineStore("app", {
         telefone: "(85)948526987",
       },
     ] as Cliente[],
-    produtos: [] as Produto[],
+    produtos: [
+      {
+        id: 1,
+        nome: "Notebook",
+        ativo: true,
+      },
+      {
+        id: 1,
+        nome: "Notebook",
+        ativo: true,
+      },
+      {
+        id: 1,
+        nome: "Notebook",
+        ativo: true,
+      },
+    ] as Produto[],
   }),
 });

@@ -1,6 +1,7 @@
 <template>
   <div class="text-center">
     <v-snackbar
+      color="success"
       v-model="appStore.showSnackBar"
       :timeout="timeout"
     >
@@ -8,7 +9,7 @@
 
       <template v-slot:actions>
         <v-btn
-          color="blue"
+          color="white"
           variant="text"
           @click="appStore.showSnackBar = false"
         >

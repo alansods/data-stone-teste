@@ -11,4 +11,5 @@ export type Cliente = {
 export type Produto = {
   id: number;
   nome: string;
+  ativo: boolean;
 };
