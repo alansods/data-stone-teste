@@ -1,21 +1,24 @@
 <template>
-  <v-container class="fill-height">
-    <v-responsive class="align-center text-center fill-height">
-      <div class="text-body-2 font-weight-light mb-n1">O que deseja fazer?</div>
+    <v-responsive class="text-center fill-height">
+      <h1 class="text-h2 font-weight-bold mb-10">O que deseja fazer?</h1>
 
-      <h1 class="text-h2 font-weight-bold">O que deseja fazer?</h1>
+      <v-row>
+        <v-col cols="12" sm="4" class="d-flex flex-column align-center" style="gap: 10px">
+          <v-btn color="primary" icon="mdi-account-plus" @click="$router.push('/adicionar-cliente')"/>
+          <span> Cadastrar novo Cliente</span>
+           </v-col>
 
-      <v-btn color="primary" icon="mdi-menu"></v-btn>
+        <v-col cols="12" sm="4" class="d-flex flex-column align-center" style="gap: 10px">
+          <v-btn color="primary" icon="mdi-archive-plus" />
+          <span>Cadastrar novo Produto</span>
+        </v-col>
 
-      <v-row class="d-flex align-center justify-center">
-        <v-col cols="12" sm="4"> Cadastrar novo Cliente </v-col>
-
-        <v-col cols="12" sm="4"> Cadastrar novo Produto </v-col>
-
-        <v-col cols="12" sm="4"> Associar produto a um cliente </v-col>
+        <v-col cols="12" sm="4" class="d-flex flex-column align-center" style="gap: 10px">
+          <v-btn color="primary" icon="mdi-swap-horizontal" />
+          <span> Associar produto a um cliente</span>
+           </v-col>
       </v-row>
     </v-responsive>
-  </v-container>
 </template>
 
 <script lang="ts" setup></script>

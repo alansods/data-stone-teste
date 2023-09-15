@@ -2,10 +2,8 @@
   <v-app>
     <NavBar />
     <v-main>
-      <v-container class="pt-10">
-        <transition mode="out-in">
-          <router-view />
-        </transition>
+      <v-container class="fluid fill-height align-start pt-10">
+        <router-view />
       </v-container>
     </v-main>
   </v-app>

@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="w-100">
     <PageTitle title="Adicionar Cliente"  />
 
-    <v-form @submit.prevent="adicionarCliente">
+    <v-form @submit.prevent="adicionarCliente" >
       <v-row dense>
         <v-col cols="12">
           <v-text-field
@@ -60,6 +60,7 @@
         >
       </v-row>
     </v-form>
+    <SnackBar message="Cliente adicionado com sucesso!" />
   </div>
 </template>
 
@@ -69,6 +70,7 @@ import { useAppStore } from "@/store/app";
 import { Cliente } from "@/types/appTypes";
 import { vMaska } from "maska";
 import PageTitle from "@/components/Typography/PageTitle.vue";
+import SnackBar from "@/components/SnackBar.vue";
 
 const options = { mask: "(##) # ####-####" };
 
@@ -94,6 +96,9 @@ const adicionarCliente = (): void => {
     email: "",
     ativo: false,
   };
+
+  appStore.showSnackBar = true
+  console.log(`appStore.showSnackBar: ${appStore.showSnackBar}`)
 };
 
 const nomeRules = [

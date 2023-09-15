@@ -1,0 +1,30 @@
+<template>
+  <div class="text-center">
+    <v-snackbar
+      v-model="appStore.showSnackBar"
+      :timeout="timeout"
+    >
+      {{ message }}
+
+      <template v-slot:actions>
+        <v-btn
+          color="blue"
+          variant="text"
+          @click="appStore.showSnackBar = false"
+        >
+          Fechar
+        </v-btn>
+      </template>
+    </v-snackbar>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { useAppStore } from "@/store/app";
+const appStore = useAppStore();
+
+const timeout = 5000;
+
+const { message } = defineProps<{ message: String }>();
+
+</script>
