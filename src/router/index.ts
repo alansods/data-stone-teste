@@ -6,6 +6,7 @@ import ClienteAdd from "@/views/clientes/ClienteAdd.vue";
 import ClientesList from "@/views/clientes/ClientesList.vue";
 import ClienteDetails from "@/views/clientes/ClienteDetails.vue";
 
+import ProdutoAdd from "@/views/produtos/ProdutoAdd.vue";
 import ProdutosLit from "@/views/produtos/ProdutosLit.vue";
 import ProdutoDetails from "@/views/produtos/ProdutoDetails.vue";
 
@@ -14,6 +15,7 @@ const routes = [
     path: '/',
     component: Home,
   },
+
   {
     path: '/clientes',
     component: ClientesList,
@@ -27,6 +29,11 @@ const routes = [
     component: ClienteDetails,
     props: true,
   },
+
+  {
+    path: '/adicionar-produto',
+    component: ProdutoAdd,
+  },
   {
     path: '/produtos',
     component: ProdutosLit,
@@ -36,6 +43,7 @@ const routes = [
     component: ProdutoDetails,
     props: true,
   },
+
 ]
 
 const router = createRouter({

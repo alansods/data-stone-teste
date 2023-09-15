@@ -9,12 +9,12 @@
            </v-col>
 
         <v-col cols="12" sm="4" class="d-flex flex-column align-center" style="gap: 10px">
-          <v-btn color="primary" icon="mdi-archive-plus" />
+          <v-btn color="primary" icon="mdi-archive-plus" @click="$router.push('/adicionar-produto')"/>
           <span>Cadastrar novo Produto</span>
         </v-col>
 
         <v-col cols="12" sm="4" class="d-flex flex-column align-center" style="gap: 10px">
-          <v-btn color="primary" icon="mdi-swap-horizontal" />
+          <v-btn color="primary" icon="mdi-swap-horizontal" @click="$router.push('/associar-cliente-a-produto')"/>
           <span> Associar produto a um cliente</span>
            </v-col>
       </v-row>
