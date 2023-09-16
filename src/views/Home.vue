@@ -14,7 +14,7 @@
         </v-col>
 
         <v-col cols="12" sm="4" class="d-flex flex-column align-center" style="gap: 10px">
-          <v-btn color="primary" icon="mdi-swap-horizontal" @click="$router.push('/associar-cliente-a-produto')"/>
+          <v-btn color="primary" icon="mdi-swap-horizontal" @click="$router.push('/associar-produto')"/>
           <span> Associar produto a um cliente</span>
            </v-col>
       </v-row>

@@ -14,6 +14,7 @@ export const useAppStore = defineStore("app", {
         documento: "teste",
         email: "alansods@gmail.com",
         telefone: "(85)989782595",
+        produtos: [] as Produto[]
       },
       {
         id: 2,
@@ -22,6 +23,7 @@ export const useAppStore = defineStore("app", {
         documento: "teste",
         email: "bia@gmail.com",
         telefone: "(85)998952645",
+        produtos: [] as Produto[]
       },
       {
         id: 3,
@@ -30,6 +32,7 @@ export const useAppStore = defineStore("app", {
         documento: "teste",
         email: "jose@gmail.com",
         telefone: "(85)948526987",
+        produtos: [] as Produto[]
       },
     ] as Cliente[],
     produtos: [
@@ -40,14 +43,25 @@ export const useAppStore = defineStore("app", {
       },
       {
         id: 1,
-        nome: "Notebook",
+        nome: "SmartPhone",
         ativo: true,
       },
       {
         id: 1,
-        nome: "Notebook",
+        nome: "Televisão",
         ativo: true,
       },
     ] as Produto[],
   }),
+  actions: {
+    //adicionar apenas clientes que nao tenham o id dos clientes em novosClientes
+    ATUALIZAR_CLIENTES(novosClientes: Cliente[]): void {
+      const clientesAtualizados = this.clientes.filter((cliente: Cliente) => {
+        const filtro = novosClientes.some((novoCliente: Cliente) => novoCliente.id !== cliente.id);
+        return filtro
+      })
+      console.log(`clientesAtualizados: ${JSON.stringify(clientesAtualizados)}`)
+      this.clientes = clientesAtualizados
+    },
+  },
 });

@@ -1,6 +1,6 @@
 <template>
   <div class="w-100">
-    <PageTitle title="Adicionar Cliente"  />
+    <PageTitle title="Adicionar Cliente" />
 
     <v-form @submit.prevent="adicionarCliente" >
       <v-row dense>
@@ -46,12 +46,7 @@
 
       <v-row dense>
         <v-col cols="12" sm="auto"
-          ><v-btn
-            type="submit"
-            color="primary"
-            :disabled="hasErrors"
-            >Adicionar</v-btn
-          ></v-col
+          ><v-btn type="submit" color="primary">Adicionar</v-btn></v-col
         >
         <v-col cols="12" sm="auto"
           ><v-btn variant="text" color="primary" @click="$router.push('/')"
@@ -65,7 +60,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { useAppStore } from "@/store/app";
 import { Cliente } from "@/types/appTypes";
 import { vMaska } from "maska";
@@ -86,45 +81,52 @@ const novoCliente = ref<Cliente>({
 const appStore = useAppStore();
 
 const adicionarCliente = (): void => {
-  appStore.clientes.push(novoCliente.value);
+    appStore.clientes.push(novoCliente.value);
 
-  novoCliente.value = {
-    id: 0,
-    nome: "",
-    documento: "",
-    telefone: "",
-    email: "",
-    ativo: false,
-  };
+    novoCliente.value = {
+      id: 0,
+      nome: "",
+      documento: "",
+      telefone: "",
+      email: "",
+      ativo: false,
+    };
 
-  appStore.showSnackBar = true
-  console.log(`appStore.showSnackBar: ${appStore.showSnackBar}`)
+    appStore.showSnackBar = true;
+    console.log(`appStore.showSnackBar: ${appStore.showSnackBar}`);
 };
 
 const nomeRules = [
-  (v: string) => !!v || "Obrigatório",
-  (v: string) =>
-    (v && v.length <= 50) || "O nome deve ter no máximo 50 caracteres",
+  (value: string) => {
+    if (value) return true;
+    return "Obrigatório.";
+  },
+  (value: string) => {
+    if (value && value.length <= 50) return true;
+    return "Obrigatório.";
+  },
 ];
 
 const emailRules = [
-  (v: string) => !!v || "Obrigatório",
-  (v: string) => /.+@.+\..+/.test(v) || "E-mail inválido",
+  (value: string) => {
+    if (value) return true;
+    return "Obrigatório.";
+  },
+  (value: string) => {
+    if (/.+@.+\..+/.test(value)) return true;
+    return "E-mail inválido.";
+  },
 ];
 
-const telefoneRules = [(v: string) => (v && v.length > 15) || "Obrigatório"];
+const telefoneRules = [
+  (value: string) => {
+    if (value) return true;
+    return "Obrigatório.";
+  },
+  (value: string) => {
+    if (value.length > 15) return true;
+    return "Número inválido.";
+  },
+];
 
-const hasErrors = computed(() => {
-  const nomeRulesPassed = nomeRules.every(
-    (rule) => rule(novoCliente.value.nome) === true
-  );
-  const emailRulesPassed = emailRules.every(
-    (rule) => rule(novoCliente.value.email) === true
-  );
-  const telefoneRulesPassed = telefoneRules.every(
-    (rule) => rule(novoCliente.value.telefone) === true
-  );
-
-  return !(nomeRulesPassed && emailRulesPassed && telefoneRulesPassed);
-});
 </script>

@@ -25,7 +25,6 @@
           ><v-btn
             type="submit"
             color="primary"
-            :disabled="hasErrors"
             >Adicionar</v-btn
           ></v-col
         >

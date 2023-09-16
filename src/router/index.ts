@@ -10,6 +10,8 @@ import ProdutoAdd from "@/views/produtos/ProdutoAdd.vue";
 import ProdutosLit from "@/views/produtos/ProdutosLit.vue";
 import ProdutoDetails from "@/views/produtos/ProdutoDetails.vue";
 
+import AssociarProduto from "@/views/AssociarProduto.vue";
+
 const routes = [
   {
     path: '/',
@@ -41,6 +43,12 @@ const routes = [
   {
     path: '/produto/:id',
     component: ProdutoDetails,
+    props: true,
+  },
+
+  {
+    path: '/associar-produto',
+    component: AssociarProduto,
     props: true,
   },
 
