@@ -34,11 +34,11 @@
 
     <v-row dense>
       <v-col>
-        <p class="text-body-2 text-right"><strong>Obs.:</strong> apenas clientes e produtos ativos aparecerão na listagem.</p>
+        <p class="text-body-2"><strong>Obs.:</strong> apenas clientes e produtos <strong class="text-uppercase text-decoration-underline">ativos</strong> aparecerão na listagem.</p>
       </v-col>
     </v-row>
 
-    <v-row dense>
+    <v-row dense class="mt-5">
       <v-col cols="12" sm="auto">
         <v-btn color="primary" @click="associarProdutos">Associar</v-btn>
       </v-col>
