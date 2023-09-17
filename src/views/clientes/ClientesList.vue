@@ -20,8 +20,8 @@
 import ClientCard from "./ClientCard.vue";
 import PageTitle from "@/components/Typography/PageTitle.vue";
 
-import { useAppStore } from "@/store/app";
-const { clientes } = useAppStore();
+import { useClientesStore } from "@/store/clientes";
+const { clientes } = useClientesStore();
 </script>
 
 <style></style>

@@ -41,6 +41,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { useAppStore } from "@/store/app";
+import { useProdutosStore } from "@/store/produtos";
 import { Produto } from "@/types/appTypes";
 import { nomeRules } from "@/utils/inputRules";
 import PageTitle from "@/components/Typography/PageTitle.vue";
@@ -53,9 +54,10 @@ const novoProduto = ref<Produto>({
 });
 
 const appStore = useAppStore();
+const produtosStore = useProdutosStore();
 
 const adicionarProduto = (): void => {
-  appStore.produtos.push(novoProduto.value);
+  produtosStore.produtos.push(novoProduto.value);
 
   novoProduto.value = {
     id: 0,

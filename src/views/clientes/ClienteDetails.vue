@@ -112,6 +112,7 @@ import { Cliente } from "@/types/appTypes";
 import { nomeRules, emailRules, telefoneRules } from "@/utils/inputRules";
 import { vMaska } from "maska";
 import { useAppStore } from "@/store/app";
+import { useClientesStore } from "@/store/clientes";
 import { useRoute, useRouter } from "vue-router";
 
 import { storeToRefs } from "pinia";
@@ -119,7 +120,7 @@ const { showDialog, showSnackBar, snackBarMessage } = storeToRefs(useAppStore())
 
 const isEditing = ref(false);
 const options = { mask: "(##) # ####-####" };
-const { clientes, EDIT_CLIENTE, DELETE_CLIENTE } = useAppStore();
+const { clientes, EDIT_CLIENTE, DELETE_CLIENTE } = useClientesStore();
 const route = useRoute();
 const router = useRouter();
 

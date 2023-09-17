@@ -57,11 +57,14 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useAppStore } from "@/store/app";
+import { useClientesStore } from "@/store/clientes";
+import { useProdutosStore } from "@/store/produtos";
 import { Cliente, Produto } from "@/types/appTypes";
 import PageTitle from "@/components/Typography/PageTitle.vue";
 import SnackBar from "@/components/SnackBar.vue";
 
-const { clientes, produtos, ATUALIZAR_CLIENTES_ASSOCIADOS } = useAppStore();
+const { clientes, ATUALIZAR_CLIENTES_ASSOCIADOS } = useClientesStore();
+const { produtos } = useProdutosStore();
 const appStore  = useAppStore();
 
 const clientesAtivos = computed<string[]>(() => {

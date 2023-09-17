@@ -20,8 +20,8 @@
 import ProdutoCard from "./ProdutoCard.vue";
 import PageTitle from "@/components/Typography/PageTitle.vue";
 
-import { useAppStore } from "@/store/app";
-const { produtos } = useAppStore();
+import { useProdutosStore } from "@/store/produtos";
+const { produtos } = useProdutosStore();
 </script>
 
 <style></style>
