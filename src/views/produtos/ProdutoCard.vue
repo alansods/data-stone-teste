@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" color="white" theme="dark" width="380">
+  <v-card class="mx-auto" color="white" theme="dark" width="370">
     <v-card-actions>
       <v-list-item class="w-100">
         <template v-slot:prepend>

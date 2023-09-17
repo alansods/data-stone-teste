@@ -9,7 +9,7 @@
     </v-row>
 
     <v-row v-else>
-      <v-col cols="12" sm="4" v-for="cliente in clientes" :key="cliente.id">
+      <v-col cols="12" sm="auto" v-for="cliente in clientes" :key="cliente.id">
         <ClientCard :cliente="cliente" />
       </v-col>
     </v-row>

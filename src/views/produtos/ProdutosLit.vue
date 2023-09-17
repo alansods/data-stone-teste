@@ -1,9 +1,15 @@
 <template>
   <div>
-    <PageTitle title="Lista de Produtos"  />
+    <PageTitle title="Lista de Produtos" />
+
+    <v-row v-if="produtos.length === 0">
+      <v-col cols="12">
+        <p>Nenhum produto cadastrado.</p>
+      </v-col>
+    </v-row>
 
     <v-row>
-      <v-col cols="12" sm="4" v-for="produto in produtos" :key="produto.id">
+      <v-col cols="12" sm="auto" v-for="produto in produtos" :key="produto.id">
         <ProdutoCard :produto="produto" />
       </v-col>
     </v-row>
