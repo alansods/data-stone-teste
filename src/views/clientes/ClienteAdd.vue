@@ -62,6 +62,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { useAppStore } from "@/store/app";
+import { storeToRefs } from "pinia";
 import { Cliente } from "@/types/appTypes";
 import { nomeRules, emailRules, telefoneRules } from "@/utils/inputRules";
 import { vMaska } from "maska";
@@ -69,6 +70,8 @@ import PageTitle from "@/components/Typography/PageTitle.vue";
 import SnackBar from "@/components/SnackBar.vue";
 
 const options = { mask: "(##) # ####-####" };
+
+const { showSnackBar, snackBarMessage } = storeToRefs(useAppStore());
 
 const novoCliente = ref<Cliente>({
   id: Math.random(),
@@ -94,9 +97,8 @@ const adicionarCliente = (): void => {
       ativo: false,
       produtos: []
     };
-
-    appStore.showSnackBar = true;
-    console.log(`appStore.showSnackBar: ${appStore.showSnackBar}`);
+    snackBarMessage.value = "Cliente adicionado com sucesso!"
+    showSnackBar.value = true;
 };
 
 </script>

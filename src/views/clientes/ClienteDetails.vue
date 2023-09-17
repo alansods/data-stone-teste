@@ -115,7 +115,6 @@ import { useAppStore } from "@/store/app";
 import { useRoute, useRouter } from "vue-router";
 
 import { storeToRefs } from "pinia";
-const appStore = useAppStore();
 const { showDialog, showSnackBar, snackBarMessage } = storeToRefs(useAppStore());
 
 const isEditing = ref(false);
