@@ -6,6 +6,7 @@ import { Cliente, Produto } from "@/types/appTypes";
 export const useAppStore = defineStore("app", {
   state: () => ({
     showSnackBar: false,
+    showDialog: false,
     clientes: [
       {
         id: 1,
@@ -76,7 +77,6 @@ export const useAppStore = defineStore("app", {
     DELETE_CLIENTE(id: number) {
       const clienteFiltrado = this.clientes.filter((cliente) => cliente.id !== id);
       this.clientes = clienteFiltrado
-
-    }
+    },
   },
 });

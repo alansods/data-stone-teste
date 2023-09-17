@@ -11,9 +11,7 @@
           v-if="!isEditing"
           >Editar</v-btn
         >
-        <v-btn color="red" @click="deletar" v-if="!isEditing"
-          >Deletar</v-btn
-        >
+        <v-btn color="red" @click="deletar" v-if="!isEditing">Deletar</v-btn>
       </div>
     </div>
 
@@ -96,17 +94,26 @@
         </v-col>
       </v-row>
     </v-form>
+    <ConfirmationDialog
+      message="Tem certeza que deseja deletar esse cliente?"
+      @confirm-delete="confirmDelete"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import PageTitle from "@/components/Typography/PageTitle.vue";
+import ConfirmationDialog from "@/components/ConfirmationDialog.vue";
 import { Cliente } from "@/types/appTypes";
 import { nomeRules, emailRules, telefoneRules } from "@/utils/inputRules";
 import { vMaska } from "maska";
 import { useAppStore } from "@/store/app";
-import { useRoute, useRouter  } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+
+import { storeToRefs } from "pinia";
+
+const { showDialog } = storeToRefs(useAppStore());
 
 const isEditing = ref(false);
 const options = { mask: "(##) # ####-####" };
@@ -130,10 +137,17 @@ const salvar = (): void => {
 };
 
 const deletar = (): void => {
-  const id = Number(clienteID)
-  DELETE_CLIENTE(id);
-  router.push('/clientes')
+  showDialog.value = true;
 };
+
+const confirmDelete = (): void => {
+  const id = Number(clienteID);
+  DELETE_CLIENTE(id);
+  showDialog.value = false;
+  router.push("/clientes");
+};
+
+//colcoar agora o snack message
 </script>
 
 <style></style>

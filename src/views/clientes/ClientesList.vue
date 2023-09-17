@@ -2,7 +2,13 @@
   <div>
     <PageTitle title="Lista de Clientes"  />
 
-    <v-row>
+    <v-row v-if="clientes.length === 0">
+      <v-col cols="12">
+        <p>Nenhum cliente cadastrado.</p>
+      </v-col>
+    </v-row>
+
+    <v-row v-else>
       <v-col cols="12" sm="4" v-for="cliente in clientes" :key="cliente.id">
         <ClientCard :cliente="cliente" />
       </v-col>
