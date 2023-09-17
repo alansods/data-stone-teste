@@ -22,6 +22,14 @@
         </div>
       </v-list-item>
     </v-card-actions>
+
+    <v-divider></v-divider>
+
+    <v-card-actions>
+      <v-btn @click="$router.push(`/cliente/${cliente.id}`)">
+        Ver mais detalhes
+      </v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 

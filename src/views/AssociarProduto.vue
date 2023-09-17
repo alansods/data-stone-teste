@@ -101,7 +101,7 @@ const associarProdutos = (): void => {
       cliente.produtos?.push(...produtosFiltrados);
     });
 
-    console.log(`clientesAtualizados: ${JSON.stringify(clientesFiltrados)}`);
+    console.log(`clientes associados: ${JSON.stringify(clientesFiltrados)}`);
 
     ATUALIZAR_CLIENTES(clientesFiltrados);
   }
