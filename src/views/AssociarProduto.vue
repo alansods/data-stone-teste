@@ -38,7 +38,7 @@
       </v-col>
     </v-row>
 
-    <v-row>
+    <v-row dense>
       <v-col cols="12" sm="auto">
         <v-btn color="primary" @click="associarProdutos">Associar</v-btn>
       </v-col>
@@ -49,6 +49,8 @@
         >
       </v-col>
     </v-row>
+
+    <SnackBar message="Produto associado com sucesso!" />
   </div>
 </template>
 
@@ -57,8 +59,10 @@ import { ref, computed } from "vue";
 import { useAppStore } from "@/store/app";
 import { Cliente, Produto } from "@/types/appTypes";
 import PageTitle from "@/components/Typography/PageTitle.vue";
+import SnackBar from "@/components/SnackBar.vue";
 
 const { clientes, produtos, ATUALIZAR_CLIENTES } = useAppStore();
+const appStore  = useAppStore();
 
 const clientesAtivos = computed<string[]>(() => {
   return clientes
@@ -104,6 +108,9 @@ const associarProdutos = (): void => {
     console.log(`clientes associados: ${JSON.stringify(clientesFiltrados)}`);
 
     ATUALIZAR_CLIENTES(clientesFiltrados);
+    clientesSelecionados.value = [];
+    produtosSelecionados.value = [];
+    appStore.showSnackBar = true;
   }
 };
 </script>

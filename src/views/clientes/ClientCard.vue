@@ -26,7 +26,7 @@
     <v-divider></v-divider>
 
     <v-card-actions>
-      <v-btn @click="$router.push(`/cliente/${cliente.id}`)">
+      <v-btn block @click="$router.push(`/cliente/${cliente.id}`)">
         Ver mais detalhes
       </v-btn>
     </v-card-actions>

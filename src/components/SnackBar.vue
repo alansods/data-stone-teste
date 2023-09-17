@@ -24,7 +24,7 @@
 import { useAppStore } from "@/store/app";
 const appStore = useAppStore();
 
-const timeout = 5000;
+const timeout = 3000;
 
 const { message } = defineProps<{ message: String }>();
 

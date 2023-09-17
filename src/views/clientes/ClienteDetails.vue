@@ -1,6 +1,6 @@
 <template>
   <div class="w-100">
-    <div class="d-flex justify-lg-space-between">
+    <div class="d-flex justify-space-between">
       <PageTitle :title="cliente.nome" />
 
       <v-btn color="primary" @click="isEditing = !isEditing" v-if="!isEditing">Editar</v-btn>
@@ -133,7 +133,7 @@ const telefoneRules = [
   },
 ];
 
-const produtosAssociados = computed(() => {
+const produtosAssociados: [] | undefined = computed(() => {
   return cliente.produtos?.map((produto) => produto.nome);
 });
 
