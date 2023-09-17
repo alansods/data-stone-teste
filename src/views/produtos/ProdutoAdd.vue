@@ -40,9 +40,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { useAppStore } from "@/store/app";
 import { Produto } from "@/types/appTypes";
+import { nomeRules } from "@/utils/inputRules";
 import PageTitle from "@/components/Typography/PageTitle.vue";
 import SnackBar from "@/components/SnackBar.vue";
 
@@ -67,18 +68,4 @@ const adicionarProduto = (): void => {
   appStore.showSnackBar = true
   console.log(`appStore.showSnackBar: ${appStore.showSnackBar}`)
 };
-
-const nomeRules = [
-  (v: string) => !!v || "Obrigatório",
-  (v: string) =>
-    (v && v.length <= 50) || "O nome deve ter no máximo 50 caracteres",
-];
-
-const hasErrors = computed(() => {
-  const nomeRulesPassed = nomeRules.every(
-    (rule) => rule(novoProduto.value.nome) === true
-  );
-
-  return !(nomeRulesPassed);
-});
 </script>

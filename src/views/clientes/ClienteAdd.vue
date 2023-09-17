@@ -63,6 +63,7 @@
 import { ref } from "vue";
 import { useAppStore } from "@/store/app";
 import { Cliente } from "@/types/appTypes";
+import { nomeRules, emailRules, telefoneRules } from "@/utils/inputRules";
 import { vMaska } from "maska";
 import PageTitle from "@/components/Typography/PageTitle.vue";
 import SnackBar from "@/components/SnackBar.vue";
@@ -97,38 +98,5 @@ const adicionarCliente = (): void => {
     appStore.showSnackBar = true;
     console.log(`appStore.showSnackBar: ${appStore.showSnackBar}`);
 };
-
-const nomeRules = [
-  (value: string) => {
-    if (value) return true;
-    return "Obrigatório.";
-  },
-  (value: string) => {
-    if (value && value.length <= 50) return true;
-    return "Obrigatório.";
-  },
-];
-
-const emailRules = [
-  (value: string) => {
-    if (value) return true;
-    return "Obrigatório.";
-  },
-  (value: string) => {
-    if (/.+@.+\..+/.test(value)) return true;
-    return "E-mail inválido.";
-  },
-];
-
-const telefoneRules = [
-  (value: string) => {
-    if (value) return true;
-    return "Obrigatório.";
-  },
-  (value: string) => {
-    if (value.length > 15) return true;
-    return "Número inválido.";
-  },
-];
 
 </script>
