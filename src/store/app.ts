@@ -54,18 +54,14 @@ export const useAppStore = defineStore("app", {
     ].sort((a, b) => a.nome.localeCompare(b.nome)) as Produto[],
   }),
   actions: {
-    //adicionar apenas clientes que nao tenham o id dos clientes em novosClientes
+    //Atualiza clientes após associar produtos à clientes.
     ATUALIZAR_CLIENTES(novosClientes: Cliente[]): void {
+      //Verifica apenas clientes que nao tenham o id dos clientes em novosClientes
       const clientesAtualizados:Cliente[] = this.clientes.filter((cliente: Cliente) => {
         const filtro = novosClientes.some((novoCliente: Cliente) => novoCliente.id !== cliente.id);
         return filtro
       })
-      console.log(`clientesAtualizados Store: ${JSON.stringify(clientesAtualizados)}`)
-      console.log(`novosClientes: ${JSON.stringify(novosClientes)}`)
-
       this.clientes = [...clientesAtualizados, ...novosClientes].sort((a, b) => a.nome.localeCompare(b.nome))
-
-      console.log(`this.clientes: ${JSON.stringify(this.clientes)}`)
     },
   },
 });
