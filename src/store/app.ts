@@ -55,7 +55,7 @@ export const useAppStore = defineStore("app", {
   }),
   actions: {
     //Atualiza clientes após associar produtos à clientes.
-    ATUALIZAR_CLIENTES(novosClientes: Cliente[]): void {
+    ATUALIZAR_CLIENTES_ASSOCIADOS(novosClientes: Cliente[]): void {
       //Verifica apenas clientes que nao tenham o id dos clientes em novosClientes
       const clientesAtualizados:Cliente[] = this.clientes.filter((cliente: Cliente) => {
         const filtro = novosClientes.some((novoCliente: Cliente) => novoCliente.id !== cliente.id);
@@ -63,5 +63,20 @@ export const useAppStore = defineStore("app", {
       })
       this.clientes = [...clientesAtualizados, ...novosClientes].sort((a, b) => a.nome.localeCompare(b.nome))
     },
+
+    EDIT_CLIENTE(clienteAtualizado: Cliente) {
+      const index = this.clientes.findIndex((cliente) => cliente.id === clienteAtualizado.id);
+
+      if (index !== -1) {
+        // Atualize os valores do cliente encontrado
+        this.clientes[index] = clienteAtualizado;
+      }
+    },
+
+    DELETE_CLIENTE(id: number) {
+      const clienteFiltrado = this.clientes.filter((cliente) => cliente.id !== id);
+      this.clientes = clienteFiltrado
+
+    }
   },
 });

@@ -61,7 +61,7 @@ import { Cliente, Produto } from "@/types/appTypes";
 import PageTitle from "@/components/Typography/PageTitle.vue";
 import SnackBar from "@/components/SnackBar.vue";
 
-const { clientes, produtos, ATUALIZAR_CLIENTES } = useAppStore();
+const { clientes, produtos, ATUALIZAR_CLIENTES_ASSOCIADOS } = useAppStore();
 const appStore  = useAppStore();
 
 const clientesAtivos = computed<string[]>(() => {
@@ -107,7 +107,7 @@ const associarProdutos = (): void => {
 
     console.log(`clientes associados: ${JSON.stringify(clientesFiltrados)}`);
 
-    ATUALIZAR_CLIENTES(clientesFiltrados);
+    ATUALIZAR_CLIENTES_ASSOCIADOS(clientesFiltrados);
     clientesSelecionados.value = [];
     produtosSelecionados.value = [];
     appStore.showSnackBar = true;
