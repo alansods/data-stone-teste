@@ -76,6 +76,7 @@ const novoCliente = ref<Cliente>({
   telefone: "",
   email: "",
   ativo: false,
+  produtos: []
 });
 
 const appStore = useAppStore();
@@ -90,6 +91,7 @@ const adicionarCliente = (): void => {
       telefone: "",
       email: "",
       ativo: false,
+      produtos: []
     };
 
     appStore.showSnackBar = true;

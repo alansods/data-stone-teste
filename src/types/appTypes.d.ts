@@ -5,7 +5,7 @@ export type Cliente = {
   telefone: string;
   email: string;
   ativo: boolean;
-  produtos?: Produto[];
+  produtos: Produto[];
 };
 
 export type Produto = {

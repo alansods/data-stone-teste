@@ -133,8 +133,8 @@ const telefoneRules = [
   },
 ];
 
-const produtosAssociados: [] | undefined = computed(() => {
-  return cliente.produtos?.map((produto) => produto.nome);
+const produtosAssociados = computed<string[]>(() => {
+  return cliente.produtos.map((produto) => produto.nome);
 });
 
 const isEditing = ref(false);
