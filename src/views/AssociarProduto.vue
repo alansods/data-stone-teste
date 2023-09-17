@@ -1,40 +1,54 @@
 <template>
   <div class="w-100">
     <PageTitle title="Associar Produto" />
-    <p>Associei um ou mais produtos a um ou mais clientes.</p>
 
-    <div class="mt-5">
-      <v-combobox
-        v-model="clientesSelecionados"
-        :items="clientesAtivos"
-        label="Selecionar Clientes"
-        multiple
-      ></v-combobox>
+    <v-row dense>
+      <v-col cols="12">
+        <p>Escolha o(s) cliente(s) desejado(s).</p>
+      </v-col>
 
-      <v-combobox
-        v-model="produtosSelecionados"
-        :items="produtosAtivos"
-        label="Selecionar Produtos"
-        multiple
-      ></v-combobox>
-
-      <v-btn color="primary" @click="associarProdutos">Associar</v-btn>
-      <v-btn color="primary" variant="text" @click="associarProdutos"
-        >Voltar</v-btn
-      >
-    </div>
-
-    <v-row class="mt-10"> clientesAtivos: {{ clientesAtivos }} </v-row>
-
-    <v-row class="mt-10">
-      clientesSelecionados: {{ clientesSelecionados }}
+      <v-col cols="12">
+        <v-combobox
+          v-model="clientesSelecionados"
+          :items="clientesAtivos"
+          label="Selecionar Clientes"
+          multiple
+        ></v-combobox>
+      </v-col>
     </v-row>
 
-    <v-row class="mt-10">
-      produtosSelecionados: {{ produtosSelecionados }}
+    <v-row dense>
+      <v-col cols="12">
+        <p>Escolha o(s) produto(s) que deseja associar aos clientes selecionados.</p>
+      </v-col>
+
+      <v-col cols="12">
+        <v-combobox
+          v-model="produtosSelecionados"
+          :items="produtosAtivos"
+          label="Selecionar Produtos"
+          multiple
+        ></v-combobox>
+      </v-col>
     </v-row>
 
-    <v-row class="mt-10"> clientes: {{ clientes }} </v-row>
+    <v-row dense>
+      <v-col>
+        <p class="text-body-2 text-right"><strong>Obs.:</strong> apenas clientes e produtos ativos aparecerão na listagem.</p>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col cols="12" sm="auto">
+        <v-btn color="primary" @click="associarProdutos">Associar</v-btn>
+      </v-col>
+
+      <v-col cols="12" sm="auto">
+        <v-btn color="primary" variant="text" @click="$router.push('/')"
+          >Voltar</v-btn
+        >
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -63,28 +77,33 @@ const produtosSelecionados = ref<string[]>([]);
 
 const associarProdutos = (): void => {
   if (produtosSelecionados.value.length > 0) {
-    console.log("associarProdutos")
+    console.log("associarProdutos");
 
     const clientesFiltrados: Cliente[] = clientes.filter((cliente: Cliente) => {
-      const filtro = clientesSelecionados.value.some((clienteSelecionado: string) => clienteSelecionado === cliente.nome);
-      return filtro
+      const filtro = clientesSelecionados.value.some(
+        (clienteSelecionado: string) => clienteSelecionado === cliente.nome
+      );
+      return filtro;
     });
 
-    console.log(`clientesFiltrados: ${JSON.stringify(clientesFiltrados)}`)
+    console.log(`clientesFiltrados: ${JSON.stringify(clientesFiltrados)}`);
 
     const produtosFiltrados: Produto[] = produtos.filter((produto: Produto) => {
-      const filtro = produtosSelecionados.value.some((produtoSelecionado: string) => produtoSelecionado === produto.nome)
-      return filtro
+      const filtro = produtosSelecionados.value.some(
+        (produtoSelecionado: string) => produtoSelecionado === produto.nome
+      );
+      return filtro;
     });
 
-    console.log(`produtosFiltrados: ${JSON.stringify(produtosFiltrados)}`)
+    console.log(`produtosFiltrados: ${JSON.stringify(produtosFiltrados)}`);
 
-    clientesFiltrados.map((cliente: Cliente) => { cliente.produtos?.push(...produtosFiltrados) });
+    clientesFiltrados.map((cliente: Cliente) => {
+      cliente.produtos?.push(...produtosFiltrados);
+    });
 
-    console.log(`clientesAtualizados: ${JSON.stringify(clientesFiltrados)}`)
+    console.log(`clientesAtualizados: ${JSON.stringify(clientesFiltrados)}`);
 
     ATUALIZAR_CLIENTES(clientesFiltrados);
-
   }
 };
 </script>
