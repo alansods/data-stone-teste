@@ -35,7 +35,6 @@
         >
       </v-row>
     </v-form>
-    <SnackBar message="Cliente adicionado com sucesso!" />
   </div>
 </template>
 
@@ -45,7 +44,6 @@ import { useAppStore } from "@/store/app";
 import { Produto } from "@/types/appTypes";
 import { nomeRules } from "@/utils/inputRules";
 import PageTitle from "@/components/Typography/PageTitle.vue";
-import SnackBar from "@/components/SnackBar.vue";
 
 
 const novoProduto = ref<Produto>({
@@ -65,6 +63,7 @@ const adicionarProduto = (): void => {
     ativo: false,
   };
 
+  appStore.snackBarMessage = "Cliente adicionado com sucesso!"
   appStore.showSnackBar = true
   console.log(`appStore.showSnackBar: ${appStore.showSnackBar}`)
 };

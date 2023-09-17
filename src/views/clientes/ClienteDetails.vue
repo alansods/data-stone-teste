@@ -94,10 +94,13 @@
         </v-col>
       </v-row>
     </v-form>
+
     <ConfirmationDialog
       message="Tem certeza que deseja deletar esse cliente?"
       @confirm-delete="confirmDelete"
     />
+
+
   </div>
 </template>
 
@@ -112,8 +115,8 @@ import { useAppStore } from "@/store/app";
 import { useRoute, useRouter } from "vue-router";
 
 import { storeToRefs } from "pinia";
-
-const { showDialog } = storeToRefs(useAppStore());
+const appStore = useAppStore();
+const { showDialog, showSnackBar, snackBarMessage } = storeToRefs(useAppStore());
 
 const isEditing = ref(false);
 const options = { mask: "(##) # ####-####" };
@@ -144,10 +147,11 @@ const confirmDelete = (): void => {
   const id = Number(clienteID);
   DELETE_CLIENTE(id);
   showDialog.value = false;
+  snackBarMessage.value = "Cliente deletado com sucesso!"
+  showSnackBar.value = true;
   router.push("/clientes");
 };
 
-//colcoar agora o snack message
 </script>
 
 <style></style>

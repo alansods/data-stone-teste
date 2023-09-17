@@ -2,16 +2,16 @@
   <div class="text-center">
     <v-snackbar
       color="success"
-      v-model="appStore.showSnackBar"
+      v-model="showSnackBar"
       :timeout="timeout"
     >
-      {{ message }}
+      {{ snackBarMessage }}
 
       <template v-slot:actions>
         <v-btn
           color="white"
           variant="text"
-          @click="appStore.showSnackBar = false"
+          @click="showSnackBar = false"
         >
           Fechar
         </v-btn>
@@ -22,10 +22,10 @@
 
 <script lang="ts" setup>
 import { useAppStore } from "@/store/app";
-const appStore = useAppStore();
+import { storeToRefs } from "pinia";
+
+const { showSnackBar, snackBarMessage } = storeToRefs(useAppStore());
 
 const timeout = 3000;
-
-const { message } = defineProps<{ message: String }>();
 
 </script>

@@ -1,6 +1,8 @@
 <template>
   <v-app>
     <NavBar />
+    <SnackBar />
+
     <v-main>
       <v-container class="fluid fill-height align-start pt-10">
         <router-view v-slot="{ Component }">
@@ -15,6 +17,8 @@
 
 <script setup lang="ts">
 import NavBar from "@/layouts/NavBar.vue";
+import SnackBar from "@/components/SnackBar.vue";
+
 </script>
 
 <style>
