@@ -13,6 +13,12 @@
         <ClientCard :cliente="cliente" />
       </v-col>
     </v-row>
+
+    <v-row>
+      <v-col cols="12" sm="auto">
+        <v-btn color="primary" @click="$router.push('/')">Voltar</v-btn>
+      </v-col>
+    </v-row>
   </div>
 </template>
 

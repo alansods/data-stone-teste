@@ -78,7 +78,7 @@
 
       <v-row dense v-if="!isEditing">
         <v-col cols="12" sm="auto">
-          <v-btn color="primary" @click="$router.push('/')">Voltar</v-btn>
+          <v-btn color="primary" @click="$router.push('/clientes')">Voltar</v-btn>
         </v-col>
       </v-row>
 
