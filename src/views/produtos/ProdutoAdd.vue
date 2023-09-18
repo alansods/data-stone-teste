@@ -45,7 +45,9 @@ import { useProdutosStore } from "@/store/produtos";
 import { Produto } from "@/types/appTypes";
 import { nomeRules } from "@/utils/inputRules";
 import PageTitle from "@/components/Typography/PageTitle.vue";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 
 const novoProduto = ref<Produto>({
   id: Math.random(),
@@ -67,6 +69,7 @@ const adicionarProduto = (): void => {
 
   appStore.snackBarMessage = "Cliente adicionado com sucesso!"
   appStore.showSnackBar = true
-  console.log(`appStore.showSnackBar: ${appStore.showSnackBar}`)
+
+  router.push("/");
 };
 </script>

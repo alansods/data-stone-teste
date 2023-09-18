@@ -6,6 +6,16 @@
       style="gap: 50px"
     >
       <ActionButton
+        title="Lista de Clientes"
+        icon="mdi-card-account-details"
+        link="clientes"
+      />
+      <ActionButton
+        title="Lista de Produtos"
+        icon="mdi-view-list"
+        link="produtos"
+      />
+      <ActionButton
         title="Cadastrar Cliente"
         icon="mdi-account-plus"
         link="adicionar-cliente"
@@ -19,16 +29,6 @@
         title="Associar produto"
         icon="mdi-swap-horizontal-bold"
         link="associar-produto"
-      />
-      <ActionButton
-        title="Lista de Clientes"
-        icon="mdi-card-account-details"
-        link="clientes"
-      />
-      <ActionButton
-        title="Lista de Produtos"
-        icon="mdi-view-list"
-        link="produtos"
       />
     </div>
   </div>
