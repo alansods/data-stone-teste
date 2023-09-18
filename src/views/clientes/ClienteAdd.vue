@@ -89,9 +89,9 @@ const { showSnackBar, snackBarMessage } = storeToRefs(useAppStore());
 
 const isFormEmpty = computed(() => {
   if (
-    novoCliente.value.nome.length === 0 &&
-    novoCliente.value.documento.length === 0 &&
-    novoCliente.value.email.length === 0 &&
+    novoCliente.value.nome.length === 0 ||
+    novoCliente.value.documento.length === 0 ||
+    novoCliente.value.email.length === 0 ||
     novoCliente.value.telefone.length === 0
   ) {
     return true;

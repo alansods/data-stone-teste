@@ -40,7 +40,7 @@
 
     <v-row dense class="mt-5">
       <v-col cols="12" sm="auto">
-        <v-btn color="primary" @click="associarProdutos">Associar</v-btn>
+        <v-btn color="primary" @click="associarProdutos" :disabled="clientesSelecionados.length === 0 || produtosSelecionados.length === 0">Associar</v-btn>
       </v-col>
 
       <v-col cols="12" sm="auto">
@@ -112,8 +112,6 @@ const associarProdutos = (): void => {
     console.log(`clientes associados: ${JSON.stringify(clientesFiltrados)}`);
 
     ATUALIZAR_CLIENTES_ASSOCIADOS(clientesFiltrados);
-    clientesSelecionados.value = [];
-    produtosSelecionados.value = [];
     appStore.snackBarMessage = "Produto associado com sucesso!"
     appStore.showSnackBar = true;
 
