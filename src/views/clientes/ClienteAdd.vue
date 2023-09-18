@@ -1,8 +1,7 @@
 <template>
   <div class="w-100">
-    <PageTitle title="Adicionar Cliente" />
-
-    <v-form @submit.prevent="adicionarCliente" >
+    <PageTitle title="Cadastrar Cliente" />
+    <v-form @submit.prevent="adicionarCliente()">
       <v-row dense>
         <v-col cols="12">
           <v-text-field
@@ -46,7 +45,7 @@
 
       <v-row dense>
         <v-col cols="12" sm="auto"
-          ><v-btn type="submit" color="primary">Adicionar</v-btn></v-col
+          ><v-btn type="submit" color="primary">Cadastrar</v-btn></v-col
         >
         <v-col cols="12" sm="auto"
           ><v-btn variant="text" color="primary" @click="$router.push('/')"
@@ -55,19 +54,21 @@
         >
       </v-row>
     </v-form>
-    <SnackBar message="Cliente adicionado com sucesso!" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useAppStore } from "@/store/app";
+import { useClientesStore } from "@/store/clientes";
 import { storeToRefs } from "pinia";
 import { Cliente } from "@/types/appTypes";
 import { nomeRules, emailRules, telefoneRules } from "@/utils/inputRules";
 import { vMaska } from "maska";
 import PageTitle from "@/components/Typography/PageTitle.vue";
-import SnackBar from "@/components/SnackBar.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const options = { mask: "(##) # ####-####" };
 
@@ -80,25 +81,26 @@ const novoCliente = ref<Cliente>({
   telefone: "",
   email: "",
   ativo: false,
-  produtos: []
+  produtos: [],
 });
 
-const appStore = useAppStore();
+const clientesStore = useClientesStore();
 
 const adicionarCliente = (): void => {
-    appStore.clientes.push(novoCliente.value);
+  clientesStore.clientes.push(novoCliente.value);
 
-    novoCliente.value = {
-      id: 0,
-      nome: "",
-      documento: "",
-      telefone: "",
-      email: "",
-      ativo: false,
-      produtos: []
-    };
-    snackBarMessage.value = "Cliente adicionado com sucesso!"
-    showSnackBar.value = true;
+  novoCliente.value = {
+    id: 0,
+    nome: "",
+    documento: "",
+    telefone: "",
+    email: "",
+    ativo: false,
+    produtos: [],
+  };
+  snackBarMessage.value = "Cliente adicionado com sucesso!";
+  showSnackBar.value = true;
+
+  router.push("/");
 };
-
 </script>

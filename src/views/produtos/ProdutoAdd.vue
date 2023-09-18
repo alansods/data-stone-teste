@@ -1,6 +1,6 @@
 <template>
   <div class="w-100">
-    <PageTitle title="Adicionar Cliente"  />
+    <PageTitle title="Cadastrar Produto"  />
 
     <v-form @submit.prevent="adicionarProduto" >
       <v-row dense>
@@ -25,7 +25,7 @@
           ><v-btn
             type="submit"
             color="primary"
-            >Adicionar</v-btn
+            >Cadastrar</v-btn
           ></v-col
         >
         <v-col cols="12" sm="auto"

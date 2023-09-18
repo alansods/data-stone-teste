@@ -1,6 +1,6 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from "@/views/Home.vue";
+import Home from "@/views/home/Home.vue";
 
 import ClienteAdd from "@/views/clientes/ClienteAdd.vue";
 import ClientesList from "@/views/clientes/ClientesList.vue";

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-100">
     <PageTitle title="Lista de Clientes"  />
 
     <v-row v-if="clientes.length === 0">

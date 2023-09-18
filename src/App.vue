@@ -4,7 +4,7 @@
     <SnackBar />
 
     <v-main>
-      <v-container class="fluid fill-height align-start pt-10">
+      <v-container class="fluid fill-height justify-center align-start pt-10">
         <router-view v-slot="{ Component }">
           <transition name="fade" mode="out-in">
             <component :is="Component" />
