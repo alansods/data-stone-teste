@@ -1,11 +1,10 @@
 <template>
   <div
     class="d-flex flex-column align-center text-center"
-    style="gap: 10px; width: 180px; cursor: pointer"
-    @click="$router.push(`/${link}`)"
+    style="gap: 10px;"
   >
-    <div class="icon-container">
-      <v-icon :icon="icon" color="white" size="x-large"></v-icon>
+    <div class="icon-container" style="cursor: pointer" @click="$router.push(`/${link}`)">
+      <v-icon :icon="icon" color="white" size="x-large" ></v-icon>
     </div>
     <strong>{{ title }}</strong>
   </div>
