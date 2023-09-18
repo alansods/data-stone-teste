@@ -31,6 +31,18 @@
       <v-row dense>
         <v-col cols="12">
           <v-text-field
+            v-model="cliente.documento"
+            label="Documento"
+            required
+            :rules="nomeRules"
+            :readonly="!isEditing"
+          ></v-text-field>
+        </v-col>
+      </v-row>
+
+      <v-row dense>
+        <v-col cols="12">
+          <v-text-field
             v-model="cliente.email"
             label="E-mail"
             required

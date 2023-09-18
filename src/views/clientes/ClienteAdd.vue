@@ -16,6 +16,17 @@
       <v-row dense>
         <v-col cols="12">
           <v-text-field
+            v-model="novoCliente.documento"
+            label="Documento"
+            required
+            :rules="nomeRules"
+          ></v-text-field>
+        </v-col>
+      </v-row>
+
+      <v-row dense>
+        <v-col cols="12">
+          <v-text-field
             v-model="novoCliente.email"
             label="E-mail"
             required
@@ -45,7 +56,9 @@
 
       <v-row dense>
         <v-col cols="12" sm="auto"
-          ><v-btn type="submit" color="primary">Cadastrar</v-btn></v-col
+          ><v-btn type="submit" color="primary" :disabled="isFormEmpty"
+            >Cadastrar</v-btn
+          ></v-col
         >
         <v-col cols="12" sm="auto"
           ><v-btn variant="text" color="primary" @click="$router.push('/')"
@@ -74,6 +87,19 @@ const options = { mask: "(##) # ####-####" };
 
 const { showSnackBar, snackBarMessage } = storeToRefs(useAppStore());
 
+const isFormEmpty = computed(() => {
+  if (
+    novoCliente.value.nome.length === 0 &&
+    novoCliente.value.documento.length === 0 &&
+    novoCliente.value.email.length === 0 &&
+    novoCliente.value.telefone.length === 0
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+});
+
 const novoCliente = ref<Cliente>({
   id: Math.random(),
   nome: "",
@@ -89,15 +115,6 @@ const clientesStore = useClientesStore();
 const adicionarCliente = (): void => {
   clientesStore.clientes.push(novoCliente.value);
 
-  novoCliente.value = {
-    id: 0,
-    nome: "",
-    documento: "",
-    telefone: "",
-    email: "",
-    ativo: false,
-    produtos: [],
-  };
   snackBarMessage.value = "Cliente adicionado com sucesso!";
   showSnackBar.value = true;
 

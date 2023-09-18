@@ -25,6 +25,7 @@
           ><v-btn
             type="submit"
             color="primary"
+            :disabled="!novoProduto.nome"
             >Cadastrar</v-btn
           ></v-col
         >
@@ -60,12 +61,6 @@ const produtosStore = useProdutosStore();
 
 const adicionarProduto = (): void => {
   produtosStore.produtos.push(novoProduto.value);
-
-  novoProduto.value = {
-    id: 0,
-    nome: "",
-    ativo: false,
-  };
 
   appStore.snackBarMessage = "Cliente adicionado com sucesso!"
   appStore.showSnackBar = true
