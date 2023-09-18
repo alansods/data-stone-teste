@@ -38,13 +38,15 @@ export const useClientesStore = defineStore("clientes", {
   actions: {
     //Atualiza clientes após associar produtos à clientes.
     ATUALIZAR_CLIENTES_ASSOCIADOS(novosClientes: Cliente[]): void {
-      //Verifica apenas clientes que nao tenham o id dos clientes em novosClientes
-      const clientesAtualizados:Cliente[] = this.clientes.filter((cliente: Cliente) => {
-        const filtro = novosClientes.some((novoCliente: Cliente) => novoCliente.id !== cliente.id);
-        return filtro
-      })
-      this.clientes = [...clientesAtualizados, ...novosClientes].sort((a, b) => a.nome.localeCompare(b.nome))
+      // Filtra os clientes antigos que não estão nos novosClientes
+      const clientesAntigosFiltrados: Cliente[] = this.clientes.filter((cliente: Cliente) => {
+        return !novosClientes.some((novoCliente: Cliente) => novoCliente.id === cliente.id);
+      });
+
+      // Concatena os clientes antigos filtrados com os novosClientes
+      this.clientes = [...clientesAntigosFiltrados, ...novosClientes].sort((a, b) => a.nome.localeCompare(b.nome));
     },
+
 
     EDIT_CLIENTE(clienteAtualizado: Cliente) {
       const index = this.clientes.findIndex((cliente) => cliente.id === clienteAtualizado.id);
