@@ -19,6 +19,7 @@
       <v-list-item link to="/adicionar-cliente">Adicionar Cliente</v-list-item>
       <v-list-item link to="/produtos">Lista de Produtos</v-list-item>
       <v-list-item link to="/adicionar-produto">Adicionar Produto</v-list-item>
+      <v-list-item link to="/associar-produto">Associar Produto</v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>

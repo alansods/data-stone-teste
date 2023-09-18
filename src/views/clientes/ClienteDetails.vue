@@ -1,7 +1,7 @@
 <template>
   <div class="w-100">
     <div class="d-flex justify-space-between">
-      <PageTitle :title="cliente.nome" />
+      <PageTitle title="Cliente" />
 
       <div>
         <v-btn
@@ -54,11 +54,11 @@
         </v-col>
       </v-row>
 
-      <v-row dense v-if="produtosAssociados?.length > 0">
+      <v-row dense>
         <v-col cols="12">
           <v-combobox
             v-model="produtosAssociados"
-            :items="cliente.produtos?.map((produto) => produto.nome)"
+            :items="produtos.map((produto) => produto.nome)"
             label="Produto(s) Associado(s)"
             multiple
             :readonly="!isEditing"
@@ -105,7 +105,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import PageTitle from "@/components/Typography/PageTitle.vue";
 import ConfirmationDialog from "@/components/ConfirmationDialog.vue";
 import { Cliente } from "@/types/appTypes";
@@ -113,14 +113,18 @@ import { nomeRules, emailRules, telefoneRules } from "@/utils/inputRules";
 import { vMaska } from "maska";
 import { useAppStore } from "@/store/app";
 import { useClientesStore } from "@/store/clientes";
+import { useProdutosStore } from "@/store/produtos";
 import { useRoute, useRouter } from "vue-router";
-
 import { storeToRefs } from "pinia";
+
+const options = { mask: "(##) # ####-####" };
+
 const { showDialog, showSnackBar, snackBarMessage } = storeToRefs(useAppStore());
+const { clientes, EDIT_CLIENTE, DELETE_CLIENTE } = useClientesStore();
+const { produtos } = useProdutosStore();
 
 const isEditing = ref(false);
-const options = { mask: "(##) # ####-####" };
-const { clientes, EDIT_CLIENTE, DELETE_CLIENTE } = useClientesStore();
+
 const route = useRoute();
 const router = useRouter();
 
@@ -130,13 +134,20 @@ const clienteAtual = clientes.filter(
 );
 const cliente = clienteAtual[0];
 
-const produtosAssociados = computed<string[]>(() => {
-  return cliente.produtos.map((produto) => produto.nome);
-});
+const produtosAssociados = ref(cliente.produtos.map((produto) => produto.nome))
 
 const salvar = (): void => {
+  cliente.produtos = produtos.filter((produto) => {
+    const filtro = produtosAssociados.value.some(
+      (produtoAssociado: string) => produtoAssociado === produto.nome
+    );
+    return filtro;
+  });
   EDIT_CLIENTE(cliente);
   isEditing.value = false;
+  snackBarMessage.value = "Cliente editado com sucesso!"
+  showSnackBar.value = true;
+  router.push("/clientes");
 };
 
 const deletar = (): void => {

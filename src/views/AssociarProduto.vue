@@ -49,8 +49,6 @@
         >
       </v-col>
     </v-row>
-
-    <SnackBar message="Produto associado com sucesso!" />
   </div>
 </template>
 
@@ -61,11 +59,14 @@ import { useClientesStore } from "@/store/clientes";
 import { useProdutosStore } from "@/store/produtos";
 import { Cliente, Produto } from "@/types/appTypes";
 import PageTitle from "@/components/Typography/PageTitle.vue";
-import SnackBar from "@/components/SnackBar.vue";
 
 const { clientes, ATUALIZAR_CLIENTES_ASSOCIADOS } = useClientesStore();
 const { produtos } = useProdutosStore();
 const appStore  = useAppStore();
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
 
 const clientesAtivos = computed<string[]>(() => {
   return clientes
@@ -113,7 +114,11 @@ const associarProdutos = (): void => {
     ATUALIZAR_CLIENTES_ASSOCIADOS(clientesFiltrados);
     clientesSelecionados.value = [];
     produtosSelecionados.value = [];
+    appStore.snackBarMessage = "Produto associado com sucesso!"
     appStore.showSnackBar = true;
+
+    router.push("/");
+
   }
 };
 </script>

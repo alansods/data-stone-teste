@@ -1,7 +1,7 @@
 <template>
   <div class="w-100">
     <div class="d-flex justify-space-between">
-      <PageTitle :title="produto.nome" />
+      <PageTitle title="Produto" />
 
       <div>
         <v-btn
