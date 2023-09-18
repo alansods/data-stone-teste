@@ -21,7 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
 import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
 
@@ -29,7 +28,7 @@ const { showDialog } = storeToRefs(useAppStore());
 
 const emit = defineEmits(['confirm-delete'])
 
-const { message } = defineProps(["message"]);
+const { message } = defineProps({ message: String });
 
 const confirmDelete = ():void => {
   emit("confirm-delete");
