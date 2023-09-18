@@ -12,12 +12,12 @@ export const useProdutosStore = defineStore("produtos", {
         ativo: true,
       },
       {
-        id: 1,
+        id: 2,
         nome: "SmartPhone",
         ativo: true,
       },
       {
-        id: 1,
+        id: 3,
         nome: "Televisão",
         ativo: true,
       },
