@@ -32,4 +32,8 @@ import SnackBar from "@/components/SnackBar.vue";
 .fade-leave-to {
   opacity: 0;
 }
+
+.v-application {
+  background-color: #f5f5f5 !important;
+}
 </style>

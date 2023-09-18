@@ -93,6 +93,9 @@ const produto = produtoAtual[0];
 const salvar = (): void => {
   EDIT_PRODUTO(produto);
   isEditing.value = false;
+  snackBarMessage.value = "Produto editado com sucesso!"
+  showSnackBar.value = true;
+  router.push("/produtos");
 };
 
 const deletar = (): void => {
