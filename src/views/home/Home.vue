@@ -1,6 +1,7 @@
 <template>
   <div class="w-100">
-    <h3 class="text-center text-h3 font-weight-bold">O que deseja fazer?</h3>
+    <MainTitle title="O que deseja fazer?" />
+
     <div
       class="d-flex justify-center flex-wrap mx-auto mt-16"
       style="gap: 50px"
@@ -35,5 +36,6 @@
 </template>
 
 <script lang="ts" setup>
+import MainTitle from "@/components/Typography/MainTitle.vue"
 import ActionButton from "./components/ActionButton.vue";
 </script>
